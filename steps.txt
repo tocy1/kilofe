@@ -1,0 +1,21 @@
+Question 1.
+Steps Followed for Code implementation of Microservice 1
+1. import necessary libraries
+2. create GET/POST function to retrieve json from call
+3. Send response to microservice 2 
+4. Retrieve response from  microservice 2
+5. Send response to User
+Steps followed for Code Implementation of Microservice 2
+1. Import necessary libraries
+2. create GET/POST function to retrieve json from microservice 1
+3. Send reverse of value of message key in json plus a random 2 decimal number in range of 1 to 100
+Create Dockerfile for each  Microservices
+build docker image with tag kilofe1 and kilofe2 for each microservice
+Create manifest file for both containers in one pod
+create service of type loadbalancer and expose pod on container1/server1 port
+To Test
+send Valid json  with a message key to http://loadbalacer-ip:8000/ GET/POST call
+Check your response
+Question 2 
+To implement a CI/CD solution for these microservices.
+Set up skaffold, Init skaffold and set u a project.

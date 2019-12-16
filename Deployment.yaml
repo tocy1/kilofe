@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: generator
+  name: kilofe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: generator
+  template:
+    metadata:
+      labels:
+        run: generator
+    spec:
+      containers:
+      - image: kilofe1
+        name: kilofe1
+      - image: kilofe2
+        name: kilofe2
+        ports:
+        - containerPort: 4000
+          protocol: TCP
+        - containerPort: 8000
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: generator
+  name: kilofe
+spec:
+  ports:
+  - name: port-1
+    port: 4000
+    protocol: TCP
+    targetPort: 4000
+  - name: port-2
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    run: generator
+  type: loadbalancer
